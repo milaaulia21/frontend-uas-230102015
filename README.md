@@ -160,7 +160,7 @@ php artisan make:controller MatkulController
 ```
 resources/views/
 ├── layouts/
-│   └── app.blade.php         # Layout utama SB Admin 2
+│   └── app.blade.php         # Layout utama
 ├── dashboard/
 │   └── index.blade.php       # Tampilan dashboard
 ├── mahasiswa/
