@@ -173,7 +173,13 @@ resources/views/
     └── edit.blade.php        # Edit matkul
 ```
 
-## 6. Jalankan Server Development
+## 6. 🎁 Fitur Tambahan (Bonus Kreativitas)
+✅ Tampilan Tanggal Hari Ini di Dashboard
+Menampilkan tanggal secara otomatis di bagian dashboard seperti:
+
+Hari ini: Friday, 13 June 2025
+
+## 7. Jalankan Server Development
 Untuk menjalankan frontend Laravel-nya dalam mode development, gunakan perintah berikut:
 ```
 php artisan serve
@@ -192,3 +198,4 @@ Jika sudah mengganti port Laravel di .env atau ingin menjalankan di port tertent
 php artisan serve --port=9700
 ```
 Ini sering dipakai jika port 8000 sudah digunakan aplikasi lain.
+
