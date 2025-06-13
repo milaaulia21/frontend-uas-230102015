@@ -174,7 +174,7 @@ resources/views/
 ```
 
 ## 6. Jalankan Server Development
-Untuk menjalankan frontend Laravel-nya dalam mode development, kamu tinggal gunakan perintah berikut:
+Untuk menjalankan frontend Laravel-nya dalam mode development, gunakan perintah berikut:
 ```
 php artisan serve
 ```
@@ -187,7 +187,7 @@ Lalu kamu bisa akses frontend-nya di browser lewat:
 http://localhost:8000
 ```
 ### 📌 Catatan tambahan
-Jika kamu sudah mengganti port Laravel di .env atau ingin menjalankan di port tertentu, kamu bisa pakai:
+Jika sudah mengganti port Laravel di .env atau ingin menjalankan di port tertentu, bisa pakai:
 ```
 php artisan serve --port=9700
 ```
