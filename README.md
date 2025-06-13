@@ -1,61 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛠️ Langkah Eksekusi Backend CodeIgniter 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Clone Repository
+Clone repositori backend ke dalam direktori lokal:
+```
+git clone https://github.com/abdau88/eval_pbf_backend.git eval_pbf_backend
+cd eval_pbf_backend
+```
 
-## About Laravel
+## 2. Install Dependensi
+Install semua dependensi yang dibutuhkan menggunakan Composer:
+```
+composer install
+```
+### 📌 Catatan tambahan
+Solusi jika composer install gagal di VS Code atau CMD :
+Apabila proses composer install gagal dijalankan melalui Visual Studio Code (VSCode) atau Command Prompt, silakan gunakan terminal bawaan Laragon.
+Caranya:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Buka Laragon.
+2. Klik menu Terminal.
+3. Masuk ke direktori project backend (misalnya Simon-kehadiran).
+4. Jalankan kembali:
+```
+composer install
+```
+Jika error tetap muncul terkait ekstensi PHP seperti intl, maka dapat menggunakan opsi tambahan:
+```
+composer update --ignore-platform-req=ext-intl
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 3. Konfigurasi Environment
+Salin file .env.example menjadi .env dan atur konfigurasi database:
+```
+cp env .env
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Edit file .env dan sesuaikan dengan koneksi database lokal:
 
-## Learning Laravel
+database.default.hostname = localhost
+database.default.database = db_uas_230102015
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 4. Buat Database dan Import Dummy Data
+Buat database baru di MySQL, dengan nama: db_uas_230102015
+Import file SQL berikut ke dalam database tersebut:
+```
+-- SETUP
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-- ----------------------------
+-- Table: mahasiswa
+-- ----------------------------
+DROP TABLE IF EXISTS `mahasiswa`;
+CREATE TABLE `mahasiswa` (
+  `npm` INT NOT NULL,
+  `nama_mahasiswa` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`npm`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-- Sample data
+INSERT INTO `mahasiswa` (`npm`, `nama_mahasiswa`, `email`) VALUES
+(330102065, 'Ji Rizky Cahyusna', 'jicantik12@gmail.com'),
+(330102066, 'Ibnu Zaki', 'ibnuzaki@gmail.com'),
+(330102067, 'Amelia Zahra', 'amelia@gmail.com'),
+(330102068, 'Santosa Setiya', 'santosa@gmail.com'),
+(330102069, 'Sarah Amaleya', 'sarah@gmail.com');
 
-## Laravel Sponsors
+-- ----------------------------
+-- Table: matkul
+-- ----------------------------
+DROP TABLE IF EXISTS `matkul`;
+CREATE TABLE `matkul` (
+  `kode_matkul` VARCHAR(5) NOT NULL,
+  `nama_matkul` VARCHAR(30) NOT NULL,
+  `sks` INT NOT NULL,
+  PRIMARY KEY (`kode_matkul`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-- Sample data
+INSERT INTO `matkul` (`kode_matkul`, `nama_matkul`, `sks`) VALUES
+('FIS02', 'Fisika', 2),
+('JRM05', 'Jaringan Komputer', 3),
+('MTK01', 'Matematika Dasar', 3),
+('PGR03', 'Pemrograman Web', 4),
+('SBD04', 'Sistem Basis Data', 3);
 
-### Premium Partners
+-- ENABLE FK AGAIN
+SET FOREIGN_KEY_CHECKS = 1;
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 5. Jalankan Server Development
+```
+php spark serve
+```
+Server akan berjalan di http://localhost:8080
 
-## Contributing
+## 6. Cek Endpoint API Menggunakan Postman
+Gunakan Postman untuk mengetes endpoint berikut:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+A. Mahasiswa
+- GET mahasiswa : http://localhost:8080/mahasiswa
+- POST mahasiswa : http://localhost:8080/mahasiswa
+- PUT mahasiswa : http://localhost:8080/mahasiswa/{npm}
+- DELETE mahasiswa : http://localhost:8080/mahasiswa/{npm}
 
-## Code of Conduct
+B. Matkul
+- GET matkul : http://localhost:8080/matkul
+- POST matkul : http://localhost:8080/matkul
+- PUT matkul : http://localhost:8080/matkul/{kode_matkul}
+- DELETE matkul : http://localhost:8080/matkul/{kode_matkul}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+# 🛠️ Langkah Eksekusi Frontend Laravel
+Berikut ini adalah tahapan yang dilakukan untuk membangun frontend Laravel pada tugas UAS:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 1. Install Laravel
+Terdapat dua cara untuk menginstal Laravel,  gunakan salah satu saja:
 
-## License
+✅ Cara 1: Menggunakan Composer (umum dan direkomendasikan)
+```
+composer create-project laravel/laravel frontend-uas-230102015
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+✅ Cara 2: Menggunakan Laravel Installer (jika sudah terpasang)
+```
+laravel new frontend-uas-230102015
+```
+Keterangan:
+
+`frontend-uas-230102015` adalah nama folder project Laravel. Silakan ganti sesuai kebutuhan.
+
+Setelah berhasil, masuk ke folder project:
+```
+cd frontend-uas-230102015
+```
+
+## 2. Buka Kode di Visual Studio Code
+```
+code .
+```
+
+## 3. Buat Controller
+```
+php artisan make:controller MahasiswaController
+php artisan make:controller MatkulController
+```
+## 4. Pasang Template Star Bootstrap
+- Unduh template Star Bootstrap
+- Ekstrak dan salin folder `startbootstrap-sb-admin-2-gh-pages` ke folder `public/`
+- Tambahkan link CSS dan JS ke `layouts/app.blade.php`
+
+## 5. Struktur Folder View
+```
+resources/views/
+├── layouts/
+│   └── app.blade.php         # Layout utama SB Admin 2
+├── dashboard/
+│   └── index.blade.php       # Tampilan dashboard
+├── mahasiswa/
+│   ├── index.blade.php       # Lihat mahasiswa
+│   ├── create.blade.php      # Tambah mahasiswa
+│   └── edit.blade.php        # Edit mahasiswa
+└── matkul/
+    ├── index.blade.php       # Lihat matkul
+    ├── create.blade.php      # Tambah matkul
+    └── edit.blade.php        # Edit matkul
+```
+
+## 6. Jalankan Server Development
+Untuk menjalankan frontend Laravel-nya dalam mode development, kamu tinggal gunakan perintah berikut:
+```
+php artisan serve
+```
+Setelah itu akan muncul output seperti ini di terminal:
+```
+Starting Laravel development server: http://127.0.0.1:8000
+```
+Lalu kamu bisa akses frontend-nya di browser lewat:
+```
+http://localhost:8000
+```
+### 📌 Catatan tambahan
+Jika kamu sudah mengganti port Laravel di .env atau ingin menjalankan di port tertentu, kamu bisa pakai:
+```
+php artisan serve --port=9700
+```
+Ini sering dipakai jika port 8000 sudah digunakan aplikasi lain.
