@@ -174,10 +174,11 @@ resources/views/
 ```
 
 ## 6. 🎁 Fitur Tambahan (Bonus Kreativitas)
-✅ Tampilan Tanggal Hari Ini di Dashboard
+### ✅ Tampilan Tanggal Hari Ini di Dashboard
 Menampilkan tanggal secara otomatis di bagian dashboard seperti:
-
+```
 Hari ini: Friday, 13 June 2025
+```
 
 ## 7. Jalankan Server Development
 Untuk menjalankan frontend Laravel-nya dalam mode development, gunakan perintah berikut:
