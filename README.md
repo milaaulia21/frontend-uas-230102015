@@ -1,4 +1,5 @@
 # 🛠️ Langkah Eksekusi Backend CodeIgniter 
+Berikut ini adalah tahapan yang dilakukan untuk membangun backend CodeIgniter pada tugas UAS:
 
 ## 1. Clone Repository
 Clone repositori backend ke dalam direktori lokal:
