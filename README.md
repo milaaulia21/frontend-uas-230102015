@@ -173,7 +173,7 @@ resources/views/
     └── edit.blade.php        # Edit matkul
 ```
 
-## 6. 🎁 Fitur Tambahan (Bonus Kreativitas)
+## 6. 🎁 Fitur Tambahan 
 ### ✅ Tampilan Tanggal Hari Ini di Dashboard
 Menampilkan tanggal secara otomatis di bagian dashboard seperti:
 ```
