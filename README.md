@@ -36,12 +36,13 @@ cp env .env
 ```
 
 Edit file .env dan sesuaikan dengan koneksi database lokal:
-
+```
 database.default.hostname = localhost
 database.default.database = db_uas_230102015
 database.default.username = root
 database.default.password =
 database.default.DBDriver = MySQLi
+```
 
 ## 4. Buat Database dan Import Dummy Data
 Buat database baru di MySQL, dengan nama: db_uas_230102015
