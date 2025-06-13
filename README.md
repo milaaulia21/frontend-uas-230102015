@@ -134,9 +134,9 @@ laravel new frontend-uas-230102015
 ```
 Keterangan:
 
-`frontend-uas-230102015` adalah nama folder project Laravel. Silakan ganti sesuai kebutuhan.
+- `frontend-uas-230102015` adalah nama folder project Laravel. Silakan ganti sesuai kebutuhan.
 
-Setelah berhasil, masuk ke folder project:
+- Setelah berhasil, masuk ke folder project:
 ```
 cd frontend-uas-230102015
 ```
