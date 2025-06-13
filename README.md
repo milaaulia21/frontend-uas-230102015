@@ -182,7 +182,7 @@ Setelah itu akan muncul output seperti ini di terminal:
 ```
 Starting Laravel development server: http://127.0.0.1:8000
 ```
-Lalu kamu bisa akses frontend-nya di browser lewat:
+Lalu bisa akses frontend-nya di browser lewat:
 ```
 http://localhost:8000
 ```
